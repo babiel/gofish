@@ -217,7 +217,8 @@ type AccountService struct {
 	// supports one or more LDAP services as an external account provider,
 	// this entity shall be populated by default.  This entity shall not be
 	// present in the AdditionalExternalAccountProviders Resource Collection.
-	LDAP ExternalAccountProvider
+	LDAP            ExternalAccountProvider
+	ActiveDirectory ExternalAccountProvider
 	// LocalAccountAuth shall govern how the Service uses
 	// the Accounts Resource Collection within this Account Service as part
 	// of authentication.  The enumerated values describe the details for
@@ -303,6 +304,7 @@ func (accountservice *AccountService) Update() error {
 		"AuthFailureLoggingThreshold",
 		"LocalAccountAuth",
 		"ServiceEnabled",
+		"ActiveDirectory",
 	}
 
 	originalElement := reflect.ValueOf(original).Elem()
